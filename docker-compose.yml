@@ -19,7 +19,8 @@ services:
     build: ./backend
     environment:
       DATABASE_URL: postgresql+psycopg://postgres:postgres@postgres:5432/model_comparison
-      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      # Reaches Ollama running natively on the host machine (Docker Desktop only).
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
     ports:
       - "8000:8000"
     depends_on:

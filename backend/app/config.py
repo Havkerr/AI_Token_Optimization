@@ -4,36 +4,35 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
 DATABASE_URL = os.environ.get(
     "DATABASE_URL",
     "postgresql+psycopg://postgres:postgres@localhost:5432/model_comparison",
 )
 
-# Supported models for Phase 1. Comparing across price/quality tiers of a single
-# provider still exercises the same multi-model flow the spec asks for; other
-# providers can be registered later without changing call sites.
+# Supported models for Phase 1. All served locally through Ollama — pull each
+# one first with `ollama pull <model>`. Other providers (cloud APIs, etc.) can
+# be registered later without changing call sites.
 SUPPORTED_MODELS = [
-    "claude-haiku-4-5-20251001",
-    "claude-sonnet-5",
-    "claude-opus-5",
+    "llama3.2",
+    "mistral",
+    "gemma2",
 ]
 
-# Centralized pricing table (spec section 8) — USD per token.
-# NOTE: these are placeholder estimates. Confirm current rates on Anthropic's
-# pricing page (https://www.anthropic.com/pricing) and update here before
-# trusting any cost figures produced by this app.
+# Centralized pricing table (spec section 8) — USD per token. Ollama models run
+# locally, so cost is always $0; the table is kept so a future cloud provider
+# can be added without changing how cost is calculated or reported.
 MODEL_PRICING = {
-    "claude-haiku-4-5-20251001": {
-        "input_price_per_token": 1.00 / 1_000_000,
-        "output_price_per_token": 5.00 / 1_000_000,
+    "llama3.2": {
+        "input_price_per_token": 0.0,
+        "output_price_per_token": 0.0,
     },
-    "claude-sonnet-5": {
-        "input_price_per_token": 3.00 / 1_000_000,
-        "output_price_per_token": 15.00 / 1_000_000,
+    "mistral": {
+        "input_price_per_token": 0.0,
+        "output_price_per_token": 0.0,
     },
-    "claude-opus-5": {
-        "input_price_per_token": 15.00 / 1_000_000,
-        "output_price_per_token": 75.00 / 1_000_000,
+    "gemma2": {
+        "input_price_per_token": 0.0,
+        "output_price_per_token": 0.0,
     },
 }

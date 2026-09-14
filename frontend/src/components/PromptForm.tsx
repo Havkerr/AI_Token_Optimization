@@ -1,10 +1,6 @@
 import { useState } from "react";
 
-const AVAILABLE_MODELS = [
-  "claude-haiku-4-5-20251001",
-  "claude-sonnet-5",
-  "claude-opus-5",
-];
+const AVAILABLE_MODELS = ["llama3.2", "mistral", "gemma2"];
 
 interface Props {
   onRun: (prompt: string, models: string[]) => void;

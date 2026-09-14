@@ -1,14 +1,14 @@
 from app.config import SUPPORTED_MODELS
-from app.providers.anthropic_provider import AnthropicProvider
 from app.providers.base import Provider
+from app.providers.ollama_provider import OllamaProvider
 
-_anthropic_provider = AnthropicProvider()
+_ollama_provider = OllamaProvider()
 
-# Every currently supported model is served by Anthropic; adding another
+# Every currently supported model is served by Ollama; adding another
 # provider later just means adding more entries here without touching
 # anything that calls get_provider().
 _PROVIDER_BY_MODEL: dict[str, Provider] = {
-    model_name: _anthropic_provider for model_name in SUPPORTED_MODELS
+    model_name: _ollama_provider for model_name in SUPPORTED_MODELS
 }
 
 
