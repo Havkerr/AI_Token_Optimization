@@ -1,0 +1,122 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  color: #1a1a1a;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+nav button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+nav button.active {
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+fieldset {
+  margin-bottom: 12px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.result-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.result-card .response-text {
+  white-space: pre-wrap;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.result-card dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4px 12px;
+  font-size: 0.9em;
+}
+
+.result-card dt {
+  font-weight: 600;
+}
+
+.rating button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.rating button.active {
+  background: #333;
+  color: white;
+}
+
+.error {
+  color: #b00020;
+}
+
+.comparison-summary {
+  margin-top: 24px;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dashboard-summary > div {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.dashboard-summary .label {
+  font-size: 0.8em;
+  color: #666;
+}
+
+.dashboard-summary .value {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9em;
+}
