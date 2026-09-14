@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AVAILABLE_MODELS = ["llama3.2", "mistral", "gemma2"];
+const AVAILABLE_MODELS = ["gemini-2.5-flash-lite", "gemini-2.5-flash", "gemini-2.5-pro"];
 
 interface Props {
   onRun: (prompt: string, models: string[]) => void;

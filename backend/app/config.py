@@ -4,35 +4,36 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 DATABASE_URL = os.environ.get(
     "DATABASE_URL",
     "postgresql+psycopg://postgres:postgres@localhost:5432/model_comparison",
 )
 
-# Supported models for Phase 1. All served locally through Ollama — pull each
-# one first with `ollama pull <model>`. Other providers (cloud APIs, etc.) can
-# be registered later without changing call sites.
+# Supported models for Phase 1. All served by the Gemini API — a cheap/mid/premium
+# spread so cost differences are actually meaningful to compare. Other providers
+# can be registered later without changing call sites.
 SUPPORTED_MODELS = [
-    "llama3.2",
-    "mistral",
-    "gemma2",
+    "gemini-2.5-flash-lite",
+    "gemini-2.5-flash",
+    "gemini-2.5-pro",
 ]
 
-# Centralized pricing table (spec section 8) — USD per token. Ollama models run
-# locally, so cost is always $0; the table is kept so a future cloud provider
-# can be added without changing how cost is calculated or reported.
+# Centralized pricing table (spec section 8) — USD per token, from
+# https://ai.google.dev/gemini-api/docs/pricing (checked September 2026; the
+# ≤200k-token context tier rate is used for gemini-2.5-pro). Confirm current
+# rates there before trusting cost figures, since providers change pricing.
 MODEL_PRICING = {
-    "llama3.2": {
-        "input_price_per_token": 0.0,
-        "output_price_per_token": 0.0,
+    "gemini-2.5-flash-lite": {
+        "input_price_per_token": 0.10 / 1_000_000,
+        "output_price_per_token": 0.40 / 1_000_000,
     },
-    "mistral": {
-        "input_price_per_token": 0.0,
-        "output_price_per_token": 0.0,
+    "gemini-2.5-flash": {
+        "input_price_per_token": 0.30 / 1_000_000,
+        "output_price_per_token": 2.50 / 1_000_000,
     },
-    "gemma2": {
-        "input_price_per_token": 0.0,
-        "output_price_per_token": 0.0,
+    "gemini-2.5-pro": {
+        "input_price_per_token": 1.25 / 1_000_000,
+        "output_price_per_token": 10.00 / 1_000_000,
     },
 }
