@@ -14,9 +14,9 @@ DATABASE_URL = os.environ.get(
 # spread so cost differences are actually meaningful to compare. Other providers
 # can be registered later without changing call sites.
 SUPPORTED_MODELS = [
-    "gemini-2.5-flash-lite",
-    "gemini-2.5-flash",
-    "gemini-2.5-pro",
+    "gemini-3.5-flash-lite",
+    "gemini-3.6-flash",
+    "gemini-3.1-pro-preview",
 ]
 
 # Centralized pricing table (spec section 8) — USD per token, from
@@ -24,16 +24,16 @@ SUPPORTED_MODELS = [
 # ≤200k-token context tier rate is used for gemini-2.5-pro). Confirm current
 # rates there before trusting cost figures, since providers change pricing.
 MODEL_PRICING = {
-    "gemini-2.5-flash-lite": {
-        "input_price_per_token": 0.10 / 1_000_000,
-        "output_price_per_token": 0.40 / 1_000_000,
-    },
-    "gemini-2.5-flash": {
+    "gemini-3.5-flash-lite": {
         "input_price_per_token": 0.30 / 1_000_000,
         "output_price_per_token": 2.50 / 1_000_000,
     },
-    "gemini-2.5-pro": {
-        "input_price_per_token": 1.25 / 1_000_000,
-        "output_price_per_token": 10.00 / 1_000_000,
+    "gemini-3.6-flash": {
+        "input_price_per_token": 0.75 / 1_000_000,
+        "output_price_per_token": 3.75 / 1_000_000,
+    },
+    "gemini-3.1-pro-preview": {
+        "input_price_per_token": 2.00 / 1_000_000,
+        "output_price_per_token": 12.00 / 1_000_000,
     },
 }
