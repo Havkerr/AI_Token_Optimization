@@ -94,6 +94,7 @@ frontend/src/
   components/            PromptForm, ResultCard, ComparisonSummary, HistoryTable, ...
   api/client.ts            Typed fetch wrappers to the backend
 ```
+<img width="1476" height="1369" alt="Screenshot 2026-09-14 104552" src="https://github.com/user-attachments/assets/961e6d40-0b86-4ece-aabe-f36ea419edb0" />
 
 ## Notes
 
